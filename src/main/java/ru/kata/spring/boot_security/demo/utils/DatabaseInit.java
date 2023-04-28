@@ -1,4 +1,4 @@
-package ru.kata.spring.boot_security.demo.utils;
+/*package ru.kata.spring.boot_security.demo.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -39,4 +39,4 @@ public class DatabaseInit {
         userService.save(user);
         userService.save(admin);
     }
-}
+}*/
