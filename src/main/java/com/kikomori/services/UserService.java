@@ -1,6 +1,6 @@
-package ru.kata.spring.boot_security.demo.services;
+package com.kikomori.services;
 
-import ru.kata.spring.boot_security.demo.models.User;
+import com.kikomori.models.User;
 
 import java.util.List;
 

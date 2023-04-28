@@ -1,11 +1,11 @@
-package ru.kata.spring.boot_security.demo.services;
+package com.kikomori.services;
 
+import com.kikomori.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.kata.spring.boot_security.demo.models.User;
-import ru.kata.spring.boot_security.demo.repositories.UserRepository;
+import com.kikomori.repositories.UserRepository;
 
 import java.util.List;
 

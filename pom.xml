@@ -10,11 +10,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>ru.kata</groupId>
-	<artifactId>spring-boot_security-demo</artifactId>
+	<groupId>com.kikomori</groupId>
+	<artifactId>SpringBootSecurityCRUD</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot_security-demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>SpringBootSecurityCRUD</name>
 
 	<properties>
 		<java.version>11</java.version>

@@ -1,4 +1,4 @@
-package ru.kata.spring.boot_security.demo.models;
+package com.kikomori.models;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
