@@ -1,6 +1,7 @@
 package ru.kata.spring.boot_security.demo.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -9,7 +10,12 @@ import java.util.Collection;
 @Entity
 @Table(name = "roles")
 @Data
+@NoArgsConstructor
 public class Role implements GrantedAuthority {
+
+    public Role(String name) {
+        this.name = name;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
