@@ -1,0 +1,25 @@
+/* header */
+
+li {
+    list-style: none;
+}
+
+.navbar-bg {
+    background-color: #343a40;
+}
+
+.logout {
+    color: #9a9da0;
+}
+
+.logout:hover {
+    color: #ffffff;
+}
+
+.nav-item {
+    color: #ffffff;
+}
+
+#current-user-email {
+    font-weight: bold;
+}
