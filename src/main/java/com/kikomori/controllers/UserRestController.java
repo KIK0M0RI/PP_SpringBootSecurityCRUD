@@ -5,23 +5,24 @@ import com.kikomori.models.User;
 import com.kikomori.services.UserServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController
 @RequestMapping("/api")
-public class MainRestController {
+public class UserRestController {
 
     private final UserServiceImpl userService;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public MainRestController(UserServiceImpl userService, ModelMapper modelMapper) {
+    public UserRestController(UserServiceImpl userService, ModelMapper modelMapper) {
         this.userService = userService;
         this.modelMapper = modelMapper;
     }
@@ -29,6 +30,18 @@ public class MainRestController {
     @GetMapping("/current/user")
     public ResponseEntity<UserDTO> getCurrentUser(Principal principal) {
         return ResponseEntity.ok(convertToUserDTO(userService.findByEmail(principal.getName())));
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<UserDTO>> getAllUser() {
+        List<User> users = userService.findAll();
+        return ResponseEntity.ok(users.stream().map(this::convertToUserDTO).collect(Collectors.toList()));
+    }
+
+    @PostMapping("/user/new")
+    public ResponseEntity<HttpStatus> saveUser(@RequestBody UserDTO userDTO) {
+        userService.save(convertToUser(userDTO));
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     private User convertToUser(UserDTO userDTO) {
