@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/user")
 public class UserRestController {
 
     private final UserServiceImpl userService;
@@ -28,7 +27,7 @@ public class UserRestController {
         this.modelMapper = modelMapper;
     }
 
-    @GetMapping("/current/user")
+    @GetMapping("/current")
     public ResponseEntity<UserDTO> getCurrentUser(Principal principal) {
         return ResponseEntity.ok(convertToUserDTO(userService.findByEmail(principal.getName())));
     }
@@ -39,15 +38,21 @@ public class UserRestController {
         return ResponseEntity.ok(users.stream().map(this::convertToUserDTO).collect(Collectors.toList()));
     }
 
-    @PostMapping("/user/new")
+    @PostMapping("/save")
     public ResponseEntity<HttpStatus> saveUser(@RequestBody UserDTO userDTO) {
         userService.save(convertToUser(userDTO));
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @DeleteMapping("/user/delete/{id}")
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable long id) {
-        userService.deleteById(id);
+    @DeleteMapping("/delete")
+    public ResponseEntity<HttpStatus> deleteUser(@RequestBody UserDTO userDTO) {
+        userService.deleteById(userDTO.getId());
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @PutMapping("/edit")
+    public ResponseEntity<HttpStatus> updateUser(@RequestBody UserDTO userDTO) {
+        userService.update(convertToUser(userDTO), userDTO.getId());
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
