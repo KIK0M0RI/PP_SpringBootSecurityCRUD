@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kikomori.repositories.RoleRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -25,8 +26,8 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role findById(long id) {
-        return roleRepository.getById(id);
+    public Optional<Role> findById(long id) {
+        return roleRepository.findById(id);
     }
 
     @Override

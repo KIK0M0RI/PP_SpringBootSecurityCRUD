@@ -3,12 +3,13 @@ package com.kikomori.services;
 import com.kikomori.models.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
     List<User> findAll();
 
-    User findById(long id);
+    Optional<User> findById(long id);
 
     User findByEmail(String email);
 

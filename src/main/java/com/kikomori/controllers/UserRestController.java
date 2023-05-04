@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -41,6 +42,12 @@ public class UserRestController {
     @PostMapping("/user/new")
     public ResponseEntity<HttpStatus> saveUser(@RequestBody UserDTO userDTO) {
         userService.save(convertToUser(userDTO));
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/user/delete/{id}")
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable long id) {
+        userService.deleteById(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

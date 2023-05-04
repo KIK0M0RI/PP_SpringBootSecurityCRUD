@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kikomori.repositories.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -28,8 +29,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(long id) {
-        return userRepository.getById(id);
+    public Optional<User> findById(long id) {
+        return userRepository.findById(id);
     }
 
     @Override

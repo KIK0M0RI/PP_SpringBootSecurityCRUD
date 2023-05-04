@@ -1,6 +1,7 @@
 const all_user_url = 'http://localhost:8080/api/users';
 const current_user_url = 'http://localhost:8080/api/current/user';
 const new_user_url = 'http://localhost:8080/api/user/new';
+const delete_user_url = 'http://localhost:8080/api/user/delete/';
 
 function parser(URL) {
     return fetch(URL).then(response => response.json());
@@ -34,7 +35,7 @@ function showInfo(URL) {
 showInfo(current_user_url);
 
 
-function createUserTable(URL1, URL2) {
+function createUserTable(URL1, URL2, URL3) {
     parser(URL1).then(user => {
         const tbody = document.querySelector("tbody");
         let i = 0;
@@ -89,6 +90,22 @@ function createUserTable(URL1, URL2) {
 
                 tr.appendChild(editTd);
                 tr.appendChild(deleteTd);
+
+                deleteButton.addEventListener('click', () => {
+                    fetch(URL3 + user.id, {
+                        method: 'DELETE'
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log('User deleted successfully');
+                            } else {
+                                console.error('Failed to delete user');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Failed to delete user', error);
+                        });
+                });
             }
 
             tbody.appendChild(tr);
@@ -96,7 +113,7 @@ function createUserTable(URL1, URL2) {
     });
 }
 
-createUserTable(all_user_url, current_user_url);
+createUserTable(all_user_url, current_user_url, delete_user_url);
 
 
 function saveUser(URL) {
