@@ -27,8 +27,9 @@
 }
 
 .table-border {
-    border: 1px solid #dee2e6;
-    margin-top: 20px;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
 }
 
 .table-caption {
@@ -60,4 +61,25 @@
 
 .dis-group {
     pointer-events: none;
+}
+
+.form-caption {
+    border-bottom: 1px solid #dee2e6;
+    padding: 10px 0 10px 20px;
+    background-color: #f2f2f2;
+}
+
+.new-user-form-border {
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 30px;
+}
+
+.form-new {
+    margin-top: 20px;
+}
+
+.btn-new {
+    margin-top: 10px;
 }

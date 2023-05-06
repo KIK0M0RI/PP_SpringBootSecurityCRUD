@@ -2,6 +2,7 @@ const allUserUrl = "http://localhost:8080/api/user/users";
 const currentUserUrl = "http://localhost:8080/api/user/current";
 const editUserUrl = "http://localhost:8080/api/user/edit";
 const deleteUserUrl = "http://localhost:8080/api/user/delete";
+const newUserUrl = "http://localhost:8080/api/user/new";
 
 function currentUserInfo() {
     fetch(currentUserUrl, {
@@ -229,8 +230,46 @@ function deleteUser() {
     });
 }
 
+function newUser() {
+    const form = document.querySelector('.form-new');
+    const button = form.querySelector('.btn-new');
+
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const userDTO = {
+            name: document.querySelector('#new-name').value,
+            surname: document.querySelector('#new-surname').value,
+            age: document.querySelector('#new-age').value,
+            email: document.querySelector('#new-email').value,
+            password: document.querySelector('#new-password').value,
+            roles: Array.from(form.roles.selectedOptions, option => ({id: option.value})),
+        };
+
+        if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+        } else {
+            fetch(newUserUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userDTO)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    completeTable();
+                    document.querySelector('#nav-user-table-tab').click()
+                    form.reset();
+                });
+        }
+    });
+}
+
 currentUserInfo();
 completeTable();
+newUser();
 editModal();
 editUser();
 deleteModal();

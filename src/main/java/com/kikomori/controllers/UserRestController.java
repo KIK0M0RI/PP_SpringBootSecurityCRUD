@@ -38,7 +38,7 @@ public class UserRestController {
         return ResponseEntity.ok(users.stream().map(this::convertToUserDTO).collect(Collectors.toList()));
     }
 
-    @PostMapping("/save")
+    @PostMapping("/new")
     public ResponseEntity<HttpStatus> saveUser(@RequestBody UserDTO userDTO) {
         userService.save(convertToUser(userDTO));
         return ResponseEntity.ok(HttpStatus.OK);
