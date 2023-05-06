@@ -1,0 +1,63 @@
+.header-bg {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.header-logout {
+    color: #9a9da0;
+}
+
+.sidebar {
+    padding-right: 10px;
+    padding-top: 20px;
+    height: 100vh;
+
+    background-color: #ffffff;
+}
+
+.main-content {
+    height: 100vh;
+    padding-top: 20px;
+    background-color: #f8f9fa;
+}
+
+.main-content-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.table-border {
+    border: 1px solid #dee2e6;
+    margin-top: 20px;
+}
+
+.table-caption {
+    border-bottom: 1px solid #dee2e6;
+    padding: 10px 0 10px 20px;
+    background-color: #f2f2f2;
+}
+
+.table-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+}
+
+.table-users {
+    border-top: 1px solid #dee2e6;
+}
+
+.table-body-users tr:nth-child(odd) {
+    background-color: #f2f2f2;
+    border-top: 2px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.dis-input {
+    background-color: #e9ecef;
+    pointer-events: none;
+}
+
+.dis-group {
+    pointer-events: none;
+}

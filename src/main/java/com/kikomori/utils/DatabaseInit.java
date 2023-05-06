@@ -1,11 +1,12 @@
-/*package ru.kata.spring.boot_security.demo.utils;
+/*
+package com.kikomori.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.kata.spring.boot_security.demo.models.Role;
-import ru.kata.spring.boot_security.demo.models.User;
-import ru.kata.spring.boot_security.demo.services.RoleServiceImpl;
-import ru.kata.spring.boot_security.demo.services.UserServiceImpl;
+import com.kikomori.models.Role;
+import com.kikomori.models.User;
+import com.kikomori.services.RoleServiceImpl;
+import com.kikomori.services.UserServiceImpl;
 
 import javax.annotation.PostConstruct;
 import java.util.Set;
@@ -39,4 +40,5 @@ public class DatabaseInit {
         userService.save(user);
         userService.save(admin);
     }
-}*/
+}
+*/

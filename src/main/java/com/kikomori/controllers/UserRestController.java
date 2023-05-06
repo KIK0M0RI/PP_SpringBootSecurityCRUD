@@ -60,7 +60,7 @@ public class UserRestController {
         return modelMapper.map(userDTO, User.class);
     }
 
-    private UserDTO convertToUserDTO(User user) {
+    private UserDTO convertToUserDTO(User user)  {
         return modelMapper.map(user, UserDTO.class);
     }
 }

@@ -1,169 +1,203 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>admin panel</title>
 
-    <title>Admin page</title>
-
-    <!--  css  -->
+    <!-- css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/favicon/apple-touch-icon.png"
+          th:href="@{/favicon/apple-touch-icon.png}">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon/favicon-32x32.png"
+          th:href="@{/favicon/favicon-32x32.png}">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon/favicon-16x16.png"
+          th:href="@{/favicon/favicon-16x16.png}">
+    <link rel="manifest" href="../static/favicon/site.webmanifest" th:href="@{/favicon/site.webmanifest}">
+
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}">
+
 </head>
 <body>
 
-<!--  navbar  -->
-<nav class="navbar navbar-dark navbar-bg">
-    <div class="container-fluid">
-        <ul class="navbar-brand navbar-nav d-flex flex-row gap-1">
-            <li class="nav-item" id="current-user-email"></li>
-            <li>with roles:</li>
-        </ul>
-        <ul id="user-roles" class="navbar-nav navbar-brand d-flex flex-row gap-1">
-
-        </ul>
-        <a class="nav-link ms-auto logout" href="/logout">Logout</a>
-    </div>
-</nav>
-
-
-<main>
-    <div class="container-fluid row d-flex gap-2">
-        <!--  sidebar  -->
-        <ul class="nav flex-column nav-pills col-2 sidebar">
-            <br>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/admin">ADMIN</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/user">USER</a>
-            </li>
-        </ul>
-
-        <div class="content-inner col">
-            <br>
-            <h1>Admin panel</h1>
-
-            <!-- tabs -->
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="all-user" data-bs-toggle="tab" data-bs-target="#all-user-pane"
-                            type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">User table
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="new-user" data-bs-toggle="tab" data-bs-target="#new-user-pane"
-                            type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">New User
-                    </button>
-                </li>
+<!-- header -->
+<header class="header">
+    <nav class="navbar header-bg  sticky-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <ul class="navbar-brand navbar-nav d-flex flex-row gap-1">
+                <li class="nav-item" id="current-email"></li>
+                <li>with roles:</li>
             </ul>
-
-
-            <div class="tab-content" id="myTabContent">
-
-                <!--  table tab -->
-                <div class="tab-pane fade show active" id="all-user-pane" role="tabpanel" aria-labelledby="all-user"
-                     tabindex="0">
-                    <div class="table-h">
-                        <h5>All users</h5>
-                    </div>
-
+            <ul id="current-roles" class="navbar-nav navbar-brand d-flex flex-row gap-1"></ul>
+            <a class="nav-link ms-auto header-logout" href="/logout">Logout</a>
+        </div>
+    </nav>
+</header>
+<div class="d-flex align-items-start">
+    <!-- sidebar -->
+    <div class="sidebar col-2 nav flex-column nav-pills" aria-orientation="vertical">
+        <button class="nav-link active" type="button" aria-selected="true">ADMIN
+        </button>
+        <button onclick="window.location.href='http://localhost:8080/user'" class="nav-link" type="button"
+                aria-selected="false">USER
+        </button>
+    </div>
+    <!-- main -->
+    <main class="col main-content">
+        <div class="container">
+            <div class="main-content-inner">
+                <h1>ADMIN PANEL</h1>
+                <!-- table-->
+                <div class="table-border">
+                    <h5 class="table-caption">ALL USERS</h5>
                     <div class="table-inner">
-                        <!--  table  -->
-                        <table class="table table-borderless">
+                        <table class="table-users table table-borderless">
                             <thead>
                             <tr>
-                                <th class="col">ID</th>
-                                <th class="col">Name</th>
-                                <th class="col">Surname</th>
-                                <th class="col">Age</th>
-                                <th class="col">Email</th>
-                                <th class="col">Role</th>
-                                <th class="col">Edit</th>
-                                <th class="col">Delete</th>
+                                <th scope="row" class="text-center align-middle">ID</th>
+                                <th scope="row" class="text-center align-middle">NAME</th>
+                                <th scope="row" class="text-center align-middle">SURNAME</th>
+                                <th scope="row" class="text-center align-middle">AGE</th>
+                                <th scope="row" class="text-center align-middle">EMAIL</th>
+                                <th scope="row" class="text-center align-middle">ROLE</th>
+                                <th scope="row" class="text-center align-middle">EDIT</th>
+                                <th scope="row" class="text-center align-middle">DELETE</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="table-body-users">
 
                             </tbody>
                         </table>
-                    </div>
-                </div>
-
-                <!--  new user tab -->
-                <div class="tab-pane fade" id="new-user-pane" role="tabpanel" aria-labelledby="new-user"
-                     tabindex="0">
-
-                    <div class="new-user-inner">
-                        <div class="new-user-h">
-                            <h5>Add new user</h5>
-                        </div>
-
-                        <div class="form-new-user-inner">
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-md-6">
-                                        <form id="form-new-user" name="form-new-user">
-                                            <div class="form-group">
-                                                <label for="new-name" class="d-flex justify-content-center pb-2"><strong>name</strong></label>
-                                                <input type="text" class="form-control"
-                                                       id="new-name">
+                        <!-- edit modal-->
+                        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="editModalLabel">EDIT USER</h1>
+                                        <button type="button" class="btn-close editModalClose" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="modal-form-edit">
+                                            <div class="form-group dis-group text-center col-6 mb-2 mx-auto">
+                                                <label for="edit-id" class="form-label fw-bold">ID</label>
+                                                <input name="id" type="text" class="form-control form-control-sm dis-input"
+                                                       id="edit-id" readonly>
                                             </div>
-                                            <div class="form-group pt-3">
-                                                <label for="new-surname" class="d-flex justify-content-center pb-2"><strong>surname</strong></label>
-                                                <input type="text" class="form-control"
-                                                       id="new-surname">
+                                            <div class="form-group text-center col-6 mb-2 mx-auto">
+                                                <label for="edit-name" class="form-label fw-bold">NAME</label>
+                                                <input name="name" type="text" class="form-control form-control-sm" id="edit-name">
                                             </div>
-                                            <div class="form-group pt-3">
-                                                <label for="new-age" class="d-flex justify-content-center pb-2"><strong>age</strong></label>
-                                                <input type="number" class="form-control"
-                                                       id="new-age">
+                                            <div class="form-group text-center col-6 mb-2 mx-auto">
+                                                <label for="edit-surname" class="form-label fw-bold">SURNAME</label>
+                                                <input name="surname" type="text" class="form-control form-control-sm"
+                                                       id="edit-surname">
                                             </div>
-                                            <div class="form-group pt-3">
-                                                <label for="new-email" class="d-flex justify-content-center pb-2"><strong>email</strong></label>
-                                                <input type="email" class="form-control"
-                                                       id="new-email">
+                                            <div class="form-group text-center col-6 mb-2 mx-auto">
+                                                <label for="edit-age" class="form-label fw-bold">AGE</label>
+                                                <input name="age"  type="number" class="form-control form-control-sm" id="edit-age">
                                             </div>
-                                            <div class="form-group pt-3">
-                                                <label for="new-password" class="d-flex justify-content-center pb-2"><strong>password</strong></label>
-                                                <input type="password" class="form-control"
-                                                       id="new-password">
+                                            <div class="form-group text-center col-6 mb-2 mx-auto">
+                                                <label for="edit-email" class="form-label fw-bold">EMAIL</label>
+                                                <input name="email" type="email" class="form-control form-control-sm"
+                                                       id="edit-email">
                                             </div>
-                                            <div class="form-group pt-3">
-                                                <label for="new-role" class="d-flex justify-content-center pb-2"><strong>roles</strong></label>
-                                                <select class="form-select" multiple size="2" id="new-role"
-                                                        name="roleSelect">
-                                                    <option value="2">ADMIN</option>
-                                                    <option value="1">USER</option>
+                                            <div class="form-group text-center col-6 mb-2 mx-auto">
+                                                <label for="edit-password" class="form-label fw-bold">PASSWORD</label>
+                                                <input name="password" type="password" class="form-control form-control-sm"
+                                                       id="edit-password">
+                                            </div>
+                                            <div class="form-group text-center col-6 mb-2 mx-auto">
+                                                <label for="edit-role" class="form-label fw-bold">ROLE</label>
+                                                <select name="roles" class="form-select" id="edit-role" multiple size="2">
+                                                    <option class="ROLE_USER" value="1">USER</option>
+                                                    <option class="ROLE_ADMIN" value="2">ADMIN</option>
                                                 </select>
                                             </div>
-                                            <div class="pt-4 d-flex justify-content-center">
-                                                <button type="submit" class="btn btn-success btn-lg">Add new user</button>
-                                            </div>
                                         </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE
+                                        </button>
+                                        <button id="edit-user" type="button" class="btn btn-primary" data-bs-dismiss="modal">EDIT</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- delete modal-->
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="deleteModalLabel">DELETE USER</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="modal-form-delete">
+                                            <div class="form-group dis-group text-center col-6 mb-2 mx-auto">
+                                                <label for="delete-id" class="form-label fw-bold">ID</label>
+                                                <input name="id" type="text" class="form-control form-control-sm dis-input"
+                                                       id="delete-id" readonly>
+                                            </div>
+
+                                            <div class="form-group dis-group text-center col-6 mb-2 mx-auto">
+                                                <label for="delete-name" class="form-label fw-bold">NAME</label>
+                                                <input name="name" type="text" class="form-control form-control-sm dis-input"
+                                                       id="delete-name" readonly>
+                                            </div>
+                                            <div class="form-group dis-group text-center col-6 mb-2 mx-auto">
+                                                <label for="delete-surname" class="form-label fw-bold">SURNAME</label>
+                                                <input name="surname" type="text" class="form-control form-control-sm dis-input"
+                                                       id="delete-surname">
+                                            </div>
+                                            <div class="form-group dis-group text-center col-6 mb-2 mx-auto">
+                                                <label for="delete-age" class="form-label fw-bold">AGE</label>
+                                                <input name="age" type="number" class="form-control form-control-sm dis-input"
+                                                       id="delete-age" readonly>
+                                            </div>
+                                            <div class="form-group dis-group text-center col-6 mb-2 mx-auto">
+                                                <label for="delete-email" class="form-label fw-bold">EMAIL</label>
+                                                <input name="email" type="email" class="form-control form-control-sm dis-input"
+                                                       id="delete-email" readonly>
+                                            </div>
+                                            <div class="form-group text-center col-6 mb-2 mx-auto">
+                                                <label for="delete-role" class="form-label fw-bold">ROLE</label>
+                                                <select name="roles" class="form-select" id="delete-role" multiple size="2" disabled>
+                                                    <option class="ROLE_USER" value="1">USER</option>
+                                                    <option class="ROLE_ADMIN" value="2">ADMIN</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE
+                                        </button>
+                                        <button id="delete-user" type="button" class="btn btn-danger" data-bs-dismiss="modal">DELETE</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
+</div>
 
 
-<!--  js  -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
+<!-- js -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
         integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
         crossorigin="anonymous"></script>
-<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+
+<script src="../static/js/main.js" th:src="@{/js/main.js}"></script>
 </body>
-</html>
