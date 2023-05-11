@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.kikomori</groupId>
+	<groupId>org.example</groupId>
 	<artifactId>SpringBootSecurityCRUD</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringBootSecurityCRUD</name>

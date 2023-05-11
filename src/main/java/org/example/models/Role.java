@@ -1,4 +1,4 @@
-package com.kikomori.models;
+package org.example.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

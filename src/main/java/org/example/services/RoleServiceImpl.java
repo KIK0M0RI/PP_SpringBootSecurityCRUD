@@ -1,10 +1,10 @@
-package com.kikomori.services;
+package org.example.services;
 
-import com.kikomori.models.Role;
+import org.example.models.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.kikomori.repositories.RoleRepository;
+import org.example.repositories.RoleRepository;
 
 import java.util.List;
 import java.util.Optional;

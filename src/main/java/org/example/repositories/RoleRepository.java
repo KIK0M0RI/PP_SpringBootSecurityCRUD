@@ -1,6 +1,6 @@
-package com.kikomori.repositories;
+package org.example.repositories;
 
-import com.kikomori.models.Role;
+import org.example.models.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

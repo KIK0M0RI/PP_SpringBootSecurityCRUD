@@ -1,6 +1,6 @@
-package com.kikomori.DTO;
+package org.example.DTO;
 
-import com.kikomori.models.Role;
+import org.example.models.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

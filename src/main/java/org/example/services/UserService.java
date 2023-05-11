@@ -1,6 +1,6 @@
-package com.kikomori.services;
+package org.example.services;
 
-import com.kikomori.models.User;
+import org.example.models.User;
 
 import java.util.List;
 import java.util.Optional;

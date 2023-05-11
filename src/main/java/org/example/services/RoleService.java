@@ -1,6 +1,6 @@
-package com.kikomori.services;
+package org.example.services;
 
-import com.kikomori.models.Role;
+import org.example.models.Role;
 
 import java.util.List;
 import java.util.Optional;

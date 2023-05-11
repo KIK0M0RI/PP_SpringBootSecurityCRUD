@@ -1,11 +1,11 @@
-package com.kikomori.services;
+package org.example.services;
 
-import com.kikomori.models.User;
+import org.example.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.kikomori.repositories.UserRepository;
+import org.example.repositories.UserRepository;
 
 import java.util.List;
 import java.util.Optional;

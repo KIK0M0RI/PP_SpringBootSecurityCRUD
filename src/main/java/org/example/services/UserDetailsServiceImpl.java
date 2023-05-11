@@ -1,6 +1,6 @@
-package com.kikomori.services;
+package org.example.services;
 
-import com.kikomori.models.User;
+import org.example.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

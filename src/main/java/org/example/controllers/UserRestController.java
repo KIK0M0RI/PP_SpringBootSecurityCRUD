@@ -1,8 +1,8 @@
-package com.kikomori.controllers;
+package org.example.controllers;
 
-import com.kikomori.DTO.UserDTO;
-import com.kikomori.models.User;
-import com.kikomori.services.UserServiceImpl;
+import org.example.DTO.UserDTO;
+import org.example.models.User;
+import org.example.services.UserServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
