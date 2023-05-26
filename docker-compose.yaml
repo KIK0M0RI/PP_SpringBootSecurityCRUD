@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+    restart: always
+    build: ./
+    ports:
+      - '8081:8080'
+
+
+
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_USER: vehsaduk
+      MYSQL_PASSWORD:  12345
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: spring_crud
